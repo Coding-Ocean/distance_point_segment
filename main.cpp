@@ -4,7 +4,7 @@
 #include "libOne.h"
 void gmain()
 {
-	window(1000, 1000);
+	window(1080, 1080,full);
 	hideCursor();
 	COLOR col1{ 200,200,200 };
 	COLOR col2{ 0,200,200 };
@@ -22,11 +22,16 @@ void gmain()
 	while (notQuit)
 	{
 		clear(0);
+		fill(40,40,40);
+		strokeWeight(0);
+		rectMode(CORNER);
+		rect(0, 0, 1080, 1080);
 		if (isTrigger(KEY_SPACE))clampFlag = !clampFlag;
 		p = { mouseX,mouseY };
 		VECTOR ab = b - a;
 		VECTOR ap = p - a;
-		float t = dot(ab, ap) / dot(ab, ab);	float save_t = t;
+		float t = dot(ab, ap) / dot(ab, ab);	
+		float save_t = t;
 		if (clampFlag) if (t > 1)t = 1; else if (t < 0)t = 0;
 		float d = (ap - ab * t).mag() / 500;
 
